@@ -22,8 +22,18 @@ public class DataStructures {
         int position =0;
         int left =0;
         int right = data.length-1;
-        Arrays
-        return position; //return index ของarray ที่หาเจอ ถ้าไม่เจอจะreturn;
+        while(left<=right){
+            int mid = (left + right) >>>1;
+            int midVal = data[mid];
+            if (midVal < key) {
+                left = mid+1;
+            }else if (midVal > key) {
+                right = mid-1;
+            }else{
+                return mid;
+            }
+        }
+        return -(left+1); //return index ของarray ที่หาเจอ ถ้าไม่เจอจะreturn;
     }
     private static int binarySearch(Comparable[] data,Comparable key){
         int position =0;
