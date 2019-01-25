@@ -16,7 +16,7 @@ public class TestDeck {
     public static void main(String[] args) {
         Deck d = new Deck();
         d.randomOrder();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             List<Card> cardOnhands = d.getCardsOnHand(2);
             int value = cardOnhands.get(0).getValue() + cardOnhands.get(1).getValue();
             String pok = (value % 10 == 8 || value % 10 == 9 ? " -> POK" : "");
