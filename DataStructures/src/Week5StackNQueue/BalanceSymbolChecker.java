@@ -101,4 +101,5 @@ public class BalanceSymbolChecker {
     public static void main(String[] args) throws FileNotFoundException {
         CheckBalance("TestStack.java");
     }
+
 }
