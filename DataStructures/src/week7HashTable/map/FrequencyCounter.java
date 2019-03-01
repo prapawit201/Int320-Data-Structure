@@ -32,7 +32,7 @@ public class FrequencyCounter {
         String line;
         while (sc.hasNextLine()) {
             line = sc.nextLine();
-            StringTokenizer stk = new StringTokenizer(line, " .:,;()*-/\\1234567890");
+            StringTokenizer stk = new StringTokenizer(line, " .:,;()*-/\\1234567890");//StringTokenizerเป็นตัวตัดคำถ้าเจอก็จะตัด
             while (stk.hasMoreElements()) {
                 String word = stk.nextToken().toLowerCase();
                 if (frequency.get(word) == null) {
