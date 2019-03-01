@@ -58,4 +58,7 @@ public class FrequencyCounter {
         }
         return stb.toString();
     }
+    public List<wordFrequency> getResult(){
+        return new ArrayList(frequency.values());
+    }
 }
