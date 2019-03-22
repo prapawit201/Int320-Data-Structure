@@ -48,6 +48,10 @@ public class TestpiorityQueue {
         for (Student student : pq) {
             System.out.println(student.id + " : " + student.gpax);
         }
+        while(!pq.isEmpty()){
+            System.out.print(pq.poll().gpax + ", ");
+        }
+        System.out.println("\b\b\n");
     }
 }
 
