@@ -24,41 +24,67 @@ public class FrequencyCounter {
     Map<String, wordFrequency> frequency;
 
     public FrequencyCounter() {
-        frequency = new HashMap(125);
+      frequency = new HashMap(120);
     }
 
-    public void process(String filename) throws FileNotFoundException {
+    public void process(String filename) throws FileNotFoundException { 
         Scanner sc = new Scanner(new File(filename));
-        String line;
-        while (sc.hasNextLine()) {
+        String line ;
+        while(sc.hasNextLine()){
             line = sc.nextLine();
-            StringTokenizer stk = new StringTokenizer(line, " .:,;()*-/\\1234567890");//StringTokenizerเป็นตัวตัดคำถ้าเจอก็จะตัด
-            while (stk.hasMoreElements()) {
+            StringTokenizer stk = new StringTokenizer(line,".,:;/\\*-+1234567890");
+            while(stk.hasMoreElements()){
                 String word = stk.nextToken().toLowerCase();
-                if (frequency.get(word) == null) {
-                    frequency.put(word, new wordFrequency(word));
-                } else {
+                if (frequency.get(word)==null) {
+                    frequency.put(word,new wordFrequency(word));
+                }else{
                     frequency.get(word).increment();
                 }
             }
-
         }
+        
+        
+//        Scanner sc = new Scanner(new File(filename));
+//        String line;
+//        while (sc.hasNextLine()) {
+//            line = sc.nextLine();
+//            StringTokenizer stk = new StringTokenizer(line, " .:,;()*-/\\1234567890");//StringTokenizerเป็นตัวตัดคำถ้าเจอก็จะตัด
+//            while (stk.hasMoreElements()) {
+//                String word = stk.nextToken().toLowerCase();
+//                if (frequency.get(word) == null) {
+//                    frequency.put(word, new wordFrequency(word));
+//                } else {
+//                    frequency.get(word).increment();
+//                }
+//            }
+//
+//        }
+        
     }
 
-    public void clear() {
+    public void clear(){
         frequency.clear();
     }
 
     public String toString() {
-        StringBuilder stb = new StringBuilder(frequency.size() * 20);
-        List<wordFrequency> words = new ArrayList(frequency.values());
+        StringBuilder  stb = new StringBuilder(frequency.size()*20);
+        List<wordFrequency> words = new ArrayList<>(frequency.values());
         Collections.sort(words);
-        for (wordFrequency word: words ) {
-            stb.append(String.format("%-15s:%3d\n", word.getWord(),word.getCount()));
+        for (wordFrequency word : words) {
+            stb.append(String.format("%-15s:%3d\n",word.getWord(),word.getCount()));
         }
         return stb.toString();
+        
+//        StringBuilder stb = new StringBuilder(frequency.size() * 20);
+//        List<wordFrequency> words = new ArrayList(frequency.values());
+//        Collections.sort(words);
+//        for (wordFrequency word : words) {
+//            stb.append(String.format("%-15s:%3d\n", word.getWord(), word.getCount()));
+//        }
+//        return stb.toString();
     }
-    public List<wordFrequency> getResult(){
+
+    public List<wordFrequency> getResult() {
         return new ArrayList(frequency.values());
-    }
+    }    
 }

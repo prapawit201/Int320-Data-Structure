@@ -28,16 +28,24 @@ public class BalancedTree {
 
 }
 
-class StudentComparator implements Comparator<Student> {
-
-    public StudentComparator() {
-    }
+    
+class StudentComparator implements Comparator<Student>{
 
     @Override
-    public int compare(Student s1, Student s2) {
-        return -s1.getName().compareTo(s2.getName()); //ใช้เฉพาะnameในการรเทียบเเทน ถ้ามี-จะไล่หลังมาหน้า ถ้าไม่มีจะไล่หน้าไปหลัง
+    public int compare(Student t, Student t1) {
+        return t.getName().compareTo(t1.getName());
     }
+    
 }
+
+//class StudentComparator implements Comparator<Student>{
+//
+//    @Override
+//    public int compare(Student t, Student t1) {
+//        return t.getName().compareTo(t1.getName());
+//    }
+//    
+//}
 
 class Student implements Comparable<Student> {
 
@@ -46,7 +54,7 @@ class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student o) {
-        return this.id - o.id;
+        return this.id - o.id;   
     }
 
     public Student() {

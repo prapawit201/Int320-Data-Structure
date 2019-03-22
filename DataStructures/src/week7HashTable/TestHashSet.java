@@ -43,35 +43,61 @@ public class TestHashSet {
     class NewStudent{
         private int id;
         private String name;
+        
 
-    @Override
-    public int hashCode() {
-        int hash = 5;//เป็นตัวเลขprime number เพราะเวลาเอาไป*จะได้เป็นuniqueึ่งถ้าเอาไปทำhashfunction ข้อมุลเดียวกันกจะอยุ่ช่องเดียวกัน
-        hash = 89 * hash + this.id;
-        hash = 89 * hash + Objects.hashCode(this.name);
-        return hash;
-    }
+//        int hash = 5;//เป็นตัวเลขprime number เพราะเวลาเอาไป*จะได้เป็นuniqueึ่งถ้าเอาไปทำhashfunction ข้อมุลเดียวกันกจะอยุ่ช่องเดียวกัน
+//        hash = 89 * hash + this.id;
+//        hash = 89 * hash + Objects.hashCode(this.name);
+//        return hash;
+        
+        public int hash(){
+            int hash = 5;
+            hash = 7*hash+this.id;
+            hash = 7*hash+Objects.hashCode(this.name);
+            return hash;
+        }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+
+        public boolean equals (Object obj){
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass()!= obj.getClass()) {
+                return false;
+            }
+            final NewStudent st = (NewStudent) obj;
+            if (this.id != st.id) {
+                return false;
+            }
+            if (!Objects.equals(this.name, st.name)) {
+                return false;
+            }
             return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final NewStudent other = (NewStudent) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
-    }
+        }   
+        
+        
+
+//        if (this == obj) {
+//            return true;
+//        }
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final NewStudent other = (NewStudent) obj;
+//        if (this.id != other.id) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.name, other.name)) {
+//            return false;
+//        }
+//        return true;
+
 
         public NewStudent(int id, String name) {
             this.id = id;
